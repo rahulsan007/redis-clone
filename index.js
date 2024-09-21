@@ -1,5 +1,6 @@
 const net = require('net');
-const {parseCommand , executeCommand, init} = require('./core.js');
+const { parseCommand, executeCommand, init } = require('./src/core');
+
 const port = 6378;
 const host = "127.0.0.1";
 const server = net.createServer((connection) =>

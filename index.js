@@ -14,6 +14,14 @@ const server = net.createServer((connection) =>
         const {command, args} = parseCommand(data);
          response = executeCommand(command, args);
 
+         if (command === 'QUIT') {
+          connection.write(response, () => {
+            connection.end(); // Gracefully close the connection
+            console.log('Client disconnected');
+          });
+          return;
+        }
+
         } catch (error) {
           response = "-Error unknown command\r\n"
         }
